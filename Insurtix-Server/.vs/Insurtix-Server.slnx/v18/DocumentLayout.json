@@ -1,12 +1,54 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\lidan\\Documents\\Workspace\\Insurtix-Homework\\Insurtix-Server\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E8AD04BC-AC0B-4862-8F55-2E5667E028F5}|Insurtix-Server.API\\Insurtix-Server.API.csproj|c:\\users\\lidan\\documents\\workspace\\insurtix-homework\\insurtix-server\\insurtix-server.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8AD04BC-AC0B-4862-8F55-2E5667E028F5}|Insurtix-Server.API\\Insurtix-Server.API.csproj|solutionrelative:insurtix-server.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8AD04BC-AC0B-4862-8F55-2E5667E028F5}|Insurtix-Server.API\\Insurtix-Server.API.csproj|c:\\users\\lidan\\documents\\workspace\\insurtix-homework\\insurtix-server\\insurtix-server.api\\.env||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{E8AD04BC-AC0B-4862-8F55-2E5667E028F5}|Insurtix-Server.API\\Insurtix-Server.API.csproj|solutionrelative:insurtix-server.api\\.env||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": ".env",
+              "DocumentMoniker": "C:\\Users\\lidan\\Documents\\Workspace\\Insurtix-Homework\\Insurtix-Server\\Insurtix-Server.API\\.env",
+              "RelativeDocumentMoniker": "Insurtix-Server.API\\.env",
+              "ToolTip": "C:\\Users\\lidan\\Documents\\Workspace\\Insurtix-Homework\\Insurtix-Server\\Insurtix-Server.API\\.env",
+              "RelativeToolTip": "Insurtix-Server.API\\.env",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-01-31T11:25:04.604Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\lidan\\Documents\\Workspace\\Insurtix-Homework\\Insurtix-Server\\Insurtix-Server.API\\Program.cs",
+              "RelativeDocumentMoniker": "Insurtix-Server.API\\Program.cs",
+              "ToolTip": "C:\\Users\\lidan\\Documents\\Workspace\\Insurtix-Homework\\Insurtix-Server\\Insurtix-Server.API\\Program.cs",
+              "RelativeToolTip": "Insurtix-Server.API\\Program.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAQwC4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-31T11:09:50.224Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

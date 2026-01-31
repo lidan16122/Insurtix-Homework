@@ -5,30 +5,56 @@ namespace Insurtix_Server.API
     {
         public static void Main(string[] args)
         {
-            var builder = WebApplication.CreateBuilder(args);
-
-            // Add services to the container.
-
-            builder.Services.AddControllers();
-            // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-            builder.Services.AddOpenApi();
-
-            var app = builder.Build();
-
-            // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
+            try
             {
-                app.MapOpenApi();
+                DotNetEnv.Env.Load();
+                var builder = WebApplication.CreateBuilder(args);
+
+                string? clientUrl = Environment.GetEnvironmentVariable("CLIENT_URL");
+                if (clientUrl == null)
+                {
+                    throw new Exception("client url not found");
+                }
+
+                string? enviroment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+                if (enviroment == null)
+                {
+                    throw new Exception("enviroment not found");
+                }
+
+                builder.Services.AddCors(options =>
+                {
+                    options.AddPolicy("allowOrigins", builder =>
+                    {
+                        builder.WithOrigins(clientUrl)
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials();
+                    });
+                });
+
+                builder.Services.AddControllers();
+                builder.Services.AddSwaggerGen();
+
+
+                var app = builder.Build();
+                app.UseCors("allowOrigins");
+                app.UseHttpsRedirection();
+                app.UseRouting();
+                app.UseAuthorization();
+                app.MapControllers();
+
+                if (app.Environment.IsDevelopment())
+                {
+                    app.UseSwagger();
+                    app.UseSwaggerUI();
+                }
+                app.Run();
             }
-
-            app.UseHttpsRedirection();
-
-            app.UseAuthorization();
-
-
-            app.MapControllers();
-
-            app.Run();
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }
