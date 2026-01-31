@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Xml.Linq;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Insurtix_Server.BL.Services
 {
@@ -31,6 +32,32 @@ namespace Insurtix_Server.BL.Services
                 .ToList();
 
             return books;
+        }
+        public bool AddNewBook(Book book)
+        {
+            try
+            {
+                XElement newBook = new XElement("book",
+                    new XAttribute("category", book.Category ?? ""),
+                    book.Cover != null ? new XAttribute("cover", book.Cover) : null,
+                    new XElement("isbn", book.ISBN),
+                    new XElement("title", new XAttribute("lang", book.Lang ?? "en"), book.Title),
+                    book.Authors.Select(a => new XElement("author", a)),
+                    new XElement("year", book.Year),
+                    new XElement("price", book.Price)
+                );
+
+                booksXML.Doc.Root.Add(newBook);
+
+                booksXML.SaveDoc();
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"error adding book: {e.Message}");
+                return false;
+            }
         }
     }
 }

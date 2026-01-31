@@ -28,5 +28,6 @@ namespace Insurtix_Server.Models.Constants
                 Doc = XDocument.Load(XMLPath);
             }
         }
+        public void SaveDoc() => Doc.Save(XMLPath);
     }
 }
