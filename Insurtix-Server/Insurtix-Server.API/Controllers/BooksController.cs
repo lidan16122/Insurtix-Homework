@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Insurtix_Server.BL.Services;
+using Insurtix_Server.Models.Entities;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Insurtix_Server.API.Controllers
@@ -7,10 +9,16 @@ namespace Insurtix_Server.API.Controllers
     [ApiController]
     public class BooksController : ControllerBase
     {
-        [HttpGet]
-        public IActionResult GetBooks()
+        private readonly BooksService booksService;
+        public BooksController(BooksService _booksService)
         {
-            return Ok();
+            booksService = _booksService;
+        }
+        [HttpGet]
+        public ActionResult<List<Book>> GetBooks()
+        {
+            List<Book> result = booksService.GetAllBooks();
+            return Ok(result);
         }
     }
 }
