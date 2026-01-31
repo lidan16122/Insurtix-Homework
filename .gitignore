@@ -24,12 +24,16 @@ bld/
 [Ll]ogs/
 
 # .NET Core
-project.lock.json
-project.fragment.lock.json
-artifacts/
+Insurtix-Server/project.lock.json
+Insurtix-Server/project.fragment.lock.json
+Insurtix-Server/artifacts/
+Insurtix-Server/Insurtix-Server.API/.env
+Insurtix-Server/.vs/
+Insurtix-Server/Insurtix-Server.API/Properties/launchSettings.json
+
 
 # ASP.NET Scaffolding
-ScaffoldingReadMe.txt
+Insurtix-Server/ScaffoldingReadMe.txt
 
 # NuGet Packages
 *.nupkg

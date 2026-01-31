@@ -11,13 +11,13 @@ namespace Insurtix_Server.API
                 var builder = WebApplication.CreateBuilder(args);
 
                 string? clientUrl = Environment.GetEnvironmentVariable("CLIENT_URL");
-                if (clientUrl == null)
+                if (string.IsNullOrEmpty(clientUrl))
                 {
                     throw new Exception("client url not found");
                 }
 
                 string? enviroment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-                if (enviroment == null)
+                if (string.IsNullOrEmpty(enviroment) )
                 {
                     throw new Exception("enviroment not found");
                 }
@@ -38,6 +38,15 @@ namespace Insurtix_Server.API
 
 
                 var app = builder.Build();
+
+                string? url = Environment.GetEnvironmentVariable("APP_URL");
+                if (string.IsNullOrEmpty(url))
+                {
+                    throw new Exception("app url not found");
+                }
+                app.Urls.Clear();
+                app.Urls.Add(url);
+
                 app.UseCors("allowOrigins");
                 app.UseHttpsRedirection();
                 app.UseRouting();
