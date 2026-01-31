@@ -16,9 +16,9 @@ namespace Insurtix_Server.API.Controllers
             booksService = _booksService;
         }
         [HttpGet]
-        public ActionResult<List<Book>> GetBooks()
+        public ActionResult<List<Book>> GetBooks([FromQuery] int pageNumber, [FromQuery] int pageSize)
         {
-            List<Book> result = booksService.GetAllBooks();
+            List<Book> result = booksService.GetAllBooks(pageNumber, pageSize);
             return Ok(result);
         }
         [HttpPost]

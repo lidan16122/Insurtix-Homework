@@ -16,7 +16,7 @@ namespace Insurtix_Server.BL.Services
         {
             booksXML = _booksXML;
         }
-        public List<Book> GetAllBooks()
+        public List<Book> GetAllBooks(int pageNumber, int pageSize)
         {
             List<Book> books = booksXML.Doc.Root.Elements("book")
                 .Select(x => new Book
@@ -30,6 +30,8 @@ namespace Insurtix_Server.BL.Services
                     Year = (int)x.Element("year"),
                     Price = (double)x.Element("price")
                 })
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
                 .ToList();
 
             return books;
@@ -38,6 +40,19 @@ namespace Insurtix_Server.BL.Services
         {
             try
             {
+                XElement? existingBook = booksXML.Doc.Root
+                   .Elements("book")
+                   .FirstOrDefault(b => (string)b.Element("isbn") == book.ISBN);
+
+                if (existingBook != null)
+                {
+                    return eStatusCodes.BadRequest;
+                }
+                if (!ValidateBook(book))
+                {
+                    return eStatusCodes.BadRequest;
+                }
+
                 XElement newBook = new XElement("book",
                     new XAttribute("category", book.Category ?? ""),
                     book.Cover != null ? new XAttribute("cover", book.Cover) : null,
@@ -71,6 +86,10 @@ namespace Insurtix_Server.BL.Services
                 if (existingBook == null)
                 {
                     return eStatusCodes.NotFound;
+                }
+                if (!ValidateBook(book))
+                {
+                    return eStatusCodes.BadRequest;
                 }
 
                 existingBook.SetAttributeValue("category", book.Category ?? "");
@@ -125,6 +144,18 @@ namespace Insurtix_Server.BL.Services
                 Console.WriteLine($"error deleting book: {e.Message}");
                 return eStatusCodes.BadRequest;
             }
+        }
+        private bool ValidateBook(Book book)
+        {
+            bool result = true;
+            if(book.Price < 0) { 
+                result = false;
+            }
+            if(book.Year > DateTime.Now.Year + 1)
+            {
+                result = false;
+            }
+            return result;
         }
     }
 }

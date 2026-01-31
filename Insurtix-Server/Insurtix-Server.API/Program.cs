@@ -1,4 +1,5 @@
 
+using Insurtix_Server.API.Middlewares;
 using Insurtix_Server.BL.Services;
 using Insurtix_Server.Models.Constants;
 
@@ -57,7 +58,7 @@ namespace Insurtix_Server.API
                 app.UseRouting();
                 app.UseAuthorization();
                 app.MapControllers();
-
+                app.UseMiddleware<RequestLoggingMiddleware>();
                 if (app.Environment.IsDevelopment())
                 {
                     app.UseSwagger();
