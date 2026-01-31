@@ -7,7 +7,8 @@ ASPNETCORE_ENVIRONMENT=Development
 APP_URL=https://localhost:7044
 BOOKS_XML_PATH=D:\Lidan\books.xml
 ```
-it can be any other value, the values are examples
+it can be any other value, the values are examples, but it is important the client side will be with the same parameters
+
 now run the server (dotnet run) from Insurtix-Server.API
 
 2. in the client side create a env.ts inside client\insurtix-client\src\environments with this parameter
