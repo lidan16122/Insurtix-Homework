@@ -122,7 +122,7 @@ namespace Insurtix_Server.BL.Services
             }
             catch (Exception e)
             {
-                Console.WriteLine($"error updating book: {e.Message}");
+                Console.WriteLine($"error deleting book: {e.Message}");
                 return eStatusCodes.BadRequest;
             }
         }
