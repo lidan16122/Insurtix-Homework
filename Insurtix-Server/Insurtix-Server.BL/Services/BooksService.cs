@@ -91,7 +91,6 @@ namespace Insurtix_Server.BL.Services
                 existingBook.Element("year").Value = book.Year.ToString();
                 existingBook.Element("price").Value = book.Price.ToString();
 
-                // Save the XML
                 booksXML.SaveDoc();
 
                 return eStatusCodes.Success;
@@ -99,6 +98,31 @@ namespace Insurtix_Server.BL.Services
             catch (Exception e)
             {
                 Console.WriteLine($"error updating book: {e.Message}");
+                return eStatusCodes.BadRequest;
+            }
+        }
+        public eStatusCodes DeleteBook(string isbn)
+        {
+            try
+            {
+                XElement? bookToDelete = booksXML.Doc.Root
+                    .Elements("book")
+                    .FirstOrDefault(b => (string)b.Element("isbn") == isbn);
+
+                if (bookToDelete == null)
+                {
+                    return eStatusCodes.NotFound;
+                }
+
+                bookToDelete.Remove();
+
+                booksXML.SaveDoc();
+
+                return eStatusCodes.Success;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"error deleting book: {e.Message}");
                 return eStatusCodes.BadRequest;
             }
         }
