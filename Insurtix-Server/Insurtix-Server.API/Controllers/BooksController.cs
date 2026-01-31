@@ -33,5 +33,11 @@ namespace Insurtix_Server.API.Controllers
             eStatusCodes result = booksService.UpdateBook(book);
             return StatusCode((int)result, result == eStatusCodes.Success);
         }
+        [HttpDelete("{isbn}")]
+        public ActionResult<bool> DeleteBook([FromRoute] string isbn) 
+        { 
+            eStatusCodes result = booksService.DeleteBook(isbn);
+            return StatusCode((int)result, result == eStatusCodes.Success);
+        }
     }
 }
