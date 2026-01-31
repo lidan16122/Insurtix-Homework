@@ -1,5 +1,6 @@
 ﻿using Insurtix_Server.BL.Services;
 using Insurtix_Server.Models.Entities;
+using Insurtix_Server.Models.Enums;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,8 +24,14 @@ namespace Insurtix_Server.API.Controllers
         [HttpPost]
         public ActionResult<bool> AddBook([FromBody] Book newBook)
         {
-            bool result = booksService.AddNewBook(newBook);
-            return result ? Ok(result) : BadRequest("failed to add the book");
+            eStatusCodes result = booksService.AddNewBook(newBook);
+            return StatusCode((int)result, result == eStatusCodes.Success);
+        }
+        [HttpPut]
+        public ActionResult<bool> UpdateBook([FromBody] Book book)
+        {
+            eStatusCodes result = booksService.UpdateBook(book);
+            return StatusCode((int)result, result == eStatusCodes.Success);
         }
     }
 }
