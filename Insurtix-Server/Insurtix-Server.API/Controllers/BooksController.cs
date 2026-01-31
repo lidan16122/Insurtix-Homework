@@ -20,5 +20,11 @@ namespace Insurtix_Server.API.Controllers
             List<Book> result = booksService.GetAllBooks();
             return Ok(result);
         }
+        [HttpPost]
+        public ActionResult<bool> AddBook([FromBody] Book newBook)
+        {
+            bool result = booksService.AddNewBook(newBook);
+            return result ? Ok(result) : BadRequest("failed to add the book");
+        }
     }
 }
