@@ -1,0 +1,117 @@
+<div class="books-root">
+    <div class="toolbar">
+        <h2>Books</h2>
+        <div class="actions">
+            <button type="button" (click)="openAdd()">+ Add Book</button>
+        </div>
+    </div>
+
+    <table class="books-table">
+        <thead>
+            <tr>
+                <th>ISBN</th>
+                <th>Cover</th>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Authors</th>
+                <th>Year</th>
+                <th>Price</th>
+                <th>Lang</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let b of pagedBooks()">
+                <td>{{ b.isbn }}</td>
+                <td>{{ b.cover }}</td>
+                <td>{{ b.title }}</td>
+                <td>{{ b.category }}</td>
+                <td>{{ (b.authors || []).join(', ') }}</td>
+                <td>{{ b.year }}</td>
+                <td>{{ b.price | number: '1.2-2' }}</td>
+                <td>{{ b.lang }}</td>
+                <td class="row-actions">
+                    <button type="button" class="edit-btn" (click)="openEdit(b)">Edit</button>
+                    <button type="button" class="delete-btn" (click)="confirmDelete(b.isbn)">Delete</button>
+                </td>
+            </tr>
+            <tr *ngIf="books().length === 0">
+                <td colspan="9">No books found.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="pagination">
+        <button type="button" (click)="goToPage(page() - 1)" [disabled]="page() === 1">Prev</button>
+        <span>Page {{ page() }} / {{ totalPages() }}</span>
+        <button type="button" (click)="goToPage(page() + 1)" [disabled]="page() === totalPages()">Next</button>
+    </div>
+
+    <div class="form-backdrop" *ngIf="showForm()">
+        <div class="form">
+            <div class="form-header">
+                <h3 id="formTitle">{{ editMode() ? 'Edit Book' : 'Add Book' }}</h3>
+            </div>
+
+            <div class="form-body">
+                <form id="bookForm" (ngSubmit)="save()" [formGroup]="form">
+                    <div class="form-grid">
+                        <label>
+                            <span class="label-text">ISBN</span>
+                            <input formControlName="isbn" [disabled]="editMode()" />
+                            <div class="error"
+                                *ngIf="form.get('isbn')?.invalid && (form.get('isbn')?.touched || form.get('isbn')?.dirty)">
+                                ISBN is required.</div>
+                        </label>
+
+                        <label>
+                            <span class="label-text">Title</span>
+                            <input formControlName="title" />
+                            <div class="error"
+                                *ngIf="form.get('title')?.invalid && (form.get('title')?.touched || form.get('title')?.dirty)">
+                                Title is required.</div>
+                        </label>
+
+                        <label>
+                            <span class="label-text">Category</span>
+                            <input formControlName="category" />
+                        </label>
+
+                        <label>
+                            <span class="label-text">Cover</span>
+                            <input formControlName="cover" />
+                        </label>
+
+                        <label>
+                            <span class="label-text">Lang</span>
+                            <input formControlName="lang" />
+                        </label>
+
+                        <label>
+                            <span class="label-text">Authors</span>
+                            <input formControlName="authors" />
+                        </label>
+
+                        <label>
+                            <span class="label-text">Year</span>
+                            <input type="number" formControlName="year" />
+                        </label>
+
+                        <label>
+                            <span class="label-text">Price</span>
+                            <input type="number" step="0.01" formControlName="price" />
+                        </label>
+                    </div>
+
+                </form>
+            </div>
+            <div class="form-actions-inside">
+                <button class="save-btn" type="button" [disabled]="form.invalid" (click)="save()">
+                    Save
+                </button>
+                <button class="cancel-btn" type="button" (click)="cancel()">Cancel</button>
+            </div>
+
+        </div>
+    </div>
+</div>
