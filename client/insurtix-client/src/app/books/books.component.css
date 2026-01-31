@@ -1,0 +1,172 @@
+:root {
+    --accent: #2b6cb0
+}
+
+.books-root {
+    max-width: 1100px;
+    margin: 1rem auto;
+    padding: 1rem
+}
+
+.toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem
+}
+
+.books-table {
+    width: 100%;
+    border-collapse: collapse
+}
+
+.books-table th,
+.books-table td {
+    border: 1px solid #e6e6e6;
+    padding: 0.45rem;
+    text-align: left
+}
+
+.cover {
+    width: 48px;
+    height: 64px;
+    object-fit: cover
+}
+
+.pagination {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 0.5rem
+}
+
+.form-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 1rem;
+}
+
+.form {
+    background: linear-gradient(180deg, #ffffff 0%, #fbfbff 100%);
+    padding: 1.25rem;
+    border-radius: 12px;
+    width: min(760px, 96%);
+    max-width: 760px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 14px 50px rgba(15, 23, 42, 0.2);
+    position: relative;
+    z-index: 1001;
+}
+
+.form-header h3 {
+    margin: 0 0 0.25rem 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #111827;
+}
+
+.form-body {
+    padding-right: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem 1rem;
+}
+
+.label-text {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    color: #374151;
+}
+
+.form input {
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    margin-top: 0;
+    border-radius: 8px;
+    border: 1px solid #e6e6e6;
+    background: #fff;
+    box-shadow: inset 0 1px 0 rgba(0,0,0,0.02);
+    font-size: 0.95rem;
+}
+
+.form-actions-inside {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid #f3f4f6;
+
+}
+
+.save-btn {
+    padding: 0.5rem 0.85rem;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.cancel-btn {
+    background: #6b7280;
+    padding: 0.45rem 0.7rem;
+    border-radius: 8px;
+}
+
+button {
+    background: var(--accent);
+    border: 0;
+    color: white;
+    padding: 0.4rem 0.6rem;
+    border-radius: 4px
+}
+
+button[disabled] {
+    opacity: 0.5
+}
+
+button[type="button"] {
+    background: #4a5568
+}
+
+.row-actions {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+
+.save-btn {
+    background: var(--accent);
+}
+
+.save-btn[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.cancel-btn {
+    background: #4a5568;
+}
+
+.error {
+    color: #c53030;
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+}
+.row-actions{
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
