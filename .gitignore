@@ -100,3 +100,4 @@ client/insurtix-client/__screenshots__/
 # System files
 client/insurtix-client/.DS_Store
 client/insurtix-client/Thumbs.db
+client/insurtix-client/src/environments/env.ts
