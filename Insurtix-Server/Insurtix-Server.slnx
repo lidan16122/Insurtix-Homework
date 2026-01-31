@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="Insurtix-Server.API/Insurtix-Server.API.csproj" />
+  <Project Path="Insurtix-Server.BL/Insurtix-Server.BL.csproj" />
 </Solution>
