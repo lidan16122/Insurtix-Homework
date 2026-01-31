@@ -1,4 +1,7 @@
 
+using Insurtix_Server.BL.Services;
+using Insurtix_Server.Models.Constants;
+
 namespace Insurtix_Server.API
 {
     public class Program
@@ -36,6 +39,8 @@ namespace Insurtix_Server.API
                 builder.Services.AddControllers();
                 builder.Services.AddSwaggerGen();
 
+                builder.Services.AddSingleton<BooksXML>();
+                builder.Services.AddTransient<BooksService>();
 
                 var app = builder.Build();
 

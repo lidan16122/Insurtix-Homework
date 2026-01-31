@@ -1,4 +1,5 @@
 <Solution>
   <Project Path="Insurtix-Server.API/Insurtix-Server.API.csproj" />
   <Project Path="Insurtix-Server.BL/Insurtix-Server.BL.csproj" />
+  <Project Path="Insurtix-Server.Models/Insurtix-Server.Models.csproj" Id="5ee2dbfd-6611-4fdc-a9f6-44d539c8a86b" />
 </Solution>
