@@ -52,3 +52,47 @@ CodeCoverage/
 *.VisualState.xml
 TestResult.xml
 nunit-*.xml
+
+
+# Compiled output
+client/insurtix-client/dist
+client/insurtix-client/tmp
+client/insurtix-client/out-tsc
+client/insurtix-client/bazel-out
+
+# Node
+client/insurtix-client/node_modules
+client/insurtix-client/npm-debug.log
+client/insurtix-client/yarn-error.log
+
+# IDEs and editors
+client/insurtix-client/.idea/
+client/insurtix-client/.project
+client/insurtix-client/.classpath
+client/insurtix-client/.c9/
+client/insurtix-client/*.launch
+client/insurtix-client/.settings/
+client/insurtix-client/*.sublime-workspace
+
+# Visual Studio Code
+client/insurtix-client/.vscode/*
+client/insurtix-client/!.vscode/settings.json
+client/insurtix-client/!.vscode/tasks.json
+client/insurtix-client/!.vscode/launch.json
+client/insurtix-client/!.vscode/extensions.json
+client/insurtix-client/!.vscode/mcp.json
+client/insurtix-client/.history/*
+
+# Miscellaneous
+client/insurtix-client/.angular/cache
+client/insurtix-client/.sass-cache/
+client/insurtix-client/connect.lock
+client/insurtix-client/coverage
+client/insurtix-client/libpeerconnection.log
+client/insurtix-client/testem.log
+client/insurtix-client/typings
+client/insurtix-client/__screenshots__/
+
+# System files
+client/insurtix-client/.DS_Store
+client/insurtix-client/Thumbs.db
